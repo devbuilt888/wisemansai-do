@@ -1,0 +1,155 @@
+.animated-text {
+  display: inline-block;
+}
+
+.word-unit {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letter {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  animation-fill-mode: both;
+}
+
+.letter.space {
+  width: 0.25em;
+}
+
+.letter.animate {
+  animation: letterJump 0.6s ease-out;
+}
+
+@keyframes letterJump {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.08);
+  }
+  75% {
+    transform: translateY(-6px) scale(1.03);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Enhanced jump for hero titles */
+.hero-title .letter.animate {
+  animation: heroLetterJump 0.8s ease-out;
+}
+
+@keyframes heroLetterJump {
+  0% {
+    transform: translateY(0) scale(1);
+    text-shadow: none;
+  }
+  30% {
+    transform: translateY(-15px) scale(1.1);
+    text-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+  }
+  60% {
+    transform: translateY(-20px) scale(1.15);
+    text-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
+  }
+  80% {
+    transform: translateY(-8px) scale(1.05);
+    text-shadow: 0 3px 10px rgba(168, 85, 247, 0.3);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    text-shadow: none;
+  }
+}
+
+/* Section titles animation */
+.section-title .letter.animate {
+  animation: sectionLetterJump 0.7s ease-out;
+}
+
+@keyframes sectionLetterJump {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-10px) scale(1.08);
+  }
+  70% {
+    transform: translateY(-15px) scale(1.12);
+  }
+  85% {
+    transform: translateY(-5px) scale(1.04);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Subtle version for smaller text */
+.animated-text.subtle .letter.animate {
+  animation: subtleLetterJump 0.5s ease-out;
+}
+
+@keyframes subtleLetterJump {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-5px) scale(1.03);
+  }
+  70% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .letter.animate,
+  .hero-title .letter.animate,
+  .section-title .letter.animate {
+    animation-duration: 0.5s;
+  }
+  
+  @keyframes heroLetterJump {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    40% {
+      transform: translateY(-8px) scale(1.05);
+    }
+    70% {
+      transform: translateY(-12px) scale(1.08);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .letter.animate,
+  .hero-title .letter.animate,
+  .section-title .letter.animate {
+    animation-duration: 0.4s;
+  }
+  
+  @keyframes heroLetterJump {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-6px) scale(1.03);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+} 

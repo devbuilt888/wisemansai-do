@@ -1,0 +1,286 @@
+.scroll-card {
+  position: fixed;
+  right: -280px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  max-width: 85vw;
+  z-index: 1002;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.scroll-card.visible {
+  right: 20px;
+  opacity: 1;
+}
+
+.scroll-card-content {
+  background: rgba(26, 11, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 16px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 45px rgba(124, 58, 237, 0.3),
+    0 6px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: colorCycle 20s ease-in-out infinite;
+}
+
+@keyframes colorCycle {
+  0% {
+    background: rgba(26, 11, 46, 0.95);
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 
+      0 15px 45px rgba(124, 58, 237, 0.3),
+      0 6px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  33% {
+    background: rgba(46, 11, 26, 0.95);
+    border-color: rgba(247, 85, 120, 0.3);
+    box-shadow: 
+      0 15px 45px rgba(237, 58, 80, 0.3),
+      0 6px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  66% {
+    background: rgba(11, 46, 26, 0.95);
+    border-color: rgba(85, 247, 120, 0.3);
+    box-shadow: 
+      0 15px 45px rgba(58, 237, 80, 0.3),
+      0 6px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    background: rgba(26, 11, 46, 0.95);
+    border-color: rgba(168, 85, 247, 0.3);
+    box-shadow: 
+      0 15px 45px rgba(124, 58, 237, 0.3),
+      0 6px 24px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+.scroll-card-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 70% 30%,
+    rgba(168, 85, 247, 0.2) 0%,
+    rgba(124, 58, 237, 0.1) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.scroll-card-glow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(168, 85, 247, 0.6),
+    rgba(124, 58, 237, 0.4),
+    rgba(139, 92, 246, 0.6)
+  );
+  border-radius: 18px;
+  filter: blur(6px);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  animation: glowColorCycle 20s ease-in-out infinite;
+}
+
+@keyframes glowColorCycle {
+  0% {
+    background: linear-gradient(
+      45deg,
+      rgba(168, 85, 247, 0.6),
+      rgba(124, 58, 237, 0.4),
+      rgba(139, 92, 246, 0.6)
+    );
+  }
+  33% {
+    background: linear-gradient(
+      45deg,
+      rgba(247, 85, 120, 0.6),
+      rgba(237, 58, 80, 0.4),
+      rgba(246, 92, 139, 0.6)
+    );
+  }
+  66% {
+    background: linear-gradient(
+      45deg,
+      rgba(85, 247, 120, 0.6),
+      rgba(58, 237, 80, 0.4),
+      rgba(92, 246, 139, 0.6)
+    );
+  }
+  100% {
+    background: linear-gradient(
+      45deg,
+      rgba(168, 85, 247, 0.6),
+      rgba(124, 58, 237, 0.4),
+      rgba(139, 92, 246, 0.6)
+    );
+  }
+}
+
+.scroll-card:hover .scroll-card-glow {
+  opacity: 1;
+}
+
+.scroll-card-close {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  font-weight: 300;
+  line-height: 1;
+  padding: 0;
+}
+
+.scroll-card-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.scroll-card-title {
+  color: #ffffff;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, #ffffff, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 2;
+  line-height: 1.3;
+  word-break: keep-all;
+  hyphens: none;
+}
+
+.scroll-card-text {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.scroll-card-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(168, 85, 247, 0.8),
+    rgba(124, 58, 237, 1),
+    rgba(139, 92, 246, 0.8)
+  );
+  border-radius: 0 0 16px 16px;
+}
+
+.scroll-card-accent::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .scroll-card {
+    width: 220px;
+    right: -240px;
+  }
+  
+  .scroll-card.visible {
+    right: 15px;
+  }
+  
+  .scroll-card-content {
+    padding: 1rem;
+  }
+  
+  .scroll-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .scroll-card-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-card {
+    width: 200px;
+    right: -220px;
+  }
+  
+  .scroll-card.visible {
+    right: 10px;
+  }
+  
+  .scroll-card-content {
+    padding: 0.9rem;
+  }
+  
+  .scroll-card-close {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+} 
