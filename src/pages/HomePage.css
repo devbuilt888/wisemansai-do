@@ -124,19 +124,22 @@
 }
 
 .home-hero-content {
-  max-width: 1200px;
+  /* max-width: 1200px; */
+  width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: end;
+  align-items: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .home-hero-text {
-  max-width: 600px;
+  max-width: 100%;
+  /* max-width: 600px; */
 }
 
 .home-hero-title {
@@ -265,13 +268,13 @@
 .hero-slide:nth-child(1) img {
   width: 196%;
   max-width: none;
-  transform: translate(-5%, -15%);
+  transform: translate(-15%, -5%);
 }
 
 /* Image 2 - Smaller, positioned higher */
 .hero-slide:nth-child(2) img {
   width: 74%;
-  transform: translateY(-8%);
+  transform: translate(18%, 10%);
 }
 
 .home-hero-dots {
@@ -746,6 +749,7 @@
 .portfolio-card {
   flex: 0 0 calc(50% - 0.75rem);
   min-height: 350px;
+  width: 100%;
   border-radius: 12px;
   background: rgba(200, 200, 200, 0.3);
   border: 2px dashed #ccc;
@@ -754,6 +758,31 @@
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+}
+/* .portfolio-card div{
+  width: 50%;
+  height: 50%;
+} */
+.portfolio-card img{
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.slick-prev,
+.slick-next {
+  background: #007bff !important;
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background: #b30000 !important;
+}
+.slick-slide>div{
+  padding: 0 12px;
 }
 
 .portfolio-card:hover {
@@ -783,6 +812,23 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
+}
+@media (max-width:425px){
+  .portfolio-card-content{
+    padding: 10px;
+  }
+  .portfolio-card-content h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0rem;
+  }
+  
+  .portfolio-card-content p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
 }
 
 /* Testimonial Section */
@@ -1271,10 +1317,19 @@
   .home-logo-text {
     display: none;
   }
-
+  .home-hero-content{
+    padding: 2px;
+  }
+  .home-hero-description{
+    padding: 5px;
+  }
   .home-hero-buttons {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+  }
+  .home-hero-title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 70px;
   }
 
   .home-btn-primary,

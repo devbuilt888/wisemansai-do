@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 import ContactModal from '../components/ContactModal';
+import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 function HomePage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -39,6 +42,34 @@ function HomePage() {
     }
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 2000,
+    autoplay:true,
+    slidesToShow: 3,
+    centerPadding: "60px",
+    centerMode: true,
+    slidesToScroll: 3,
+    className: "center",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="home-page">
       {/* Navigation */}
@@ -68,10 +99,10 @@ function HomePage() {
               Innovative solutions for a changing world
             </h1>
             <p className="home-hero-description">
-              Businesses rely on us to help them obtain a competitive advantage. 
-              Whether it's by developing a minimum viable product, releasing a new app 
-              first to market, analysing data to make better decisions, or designing an 
-              interactive website, we do it with a passion for the consumer and a 
+              Businesses rely on us to help them obtain a competitive advantage.
+              Whether it's by developing a minimum viable product, releasing a new app
+              first to market, analysing data to make better decisions, or designing an
+              interactive website, we do it with a passion for the consumer and a
               fascination with technology.
             </p>
             <div className="home-hero-buttons">
@@ -87,7 +118,7 @@ function HomePage() {
           <div className="home-hero-image">
             <div className="hero-carousel">
               {heroImages.map((image, index) => (
-                <div 
+                <div
                   key={index}
                   className={`hero-slide ${index === activeSlide ? 'active' : ''}`}
                 >
@@ -96,15 +127,15 @@ function HomePage() {
               ))}
             </div>
           </div>
-        </div>
-        <div className="home-hero-dots">
-          {heroImages.map((_, index) => (
-            <span 
-              key={index}
-              className={`dot ${index === activeSlide ? 'active' : ''}`}
-              onClick={() => setActiveSlide(index)}
-            ></span>
-          ))}
+          <div className="home-hero-dots">
+            {heroImages.map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${index === activeSlide ? 'active' : ''}`}
+                onClick={() => setActiveSlide(index)}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -128,8 +159,8 @@ function HomePage() {
               <div className="trusted-text">
                 <h2 className="trusted-title">Trusted by Leading Companies across the World</h2>
                 <p className="trusted-description">
-                  We transform businesses with digital platforms with our product engineering, 
-                  data analytics, and comprehensive business solutions. Our team of experts 
+                  We transform businesses with digital platforms with our product engineering,
+                  data analytics, and comprehensive business solutions. Our team of experts
                   delivers tailored solutions that drive growth and enhance brand visibility.
                 </p>
                 <Link to="/original" className="trusted-link">
@@ -137,11 +168,11 @@ function HomePage() {
                   <span className="link-arrow">→</span>
                 </Link>
               </div>
-            <div className="trusted-image">
-              <div className="trusted-image-card">
-                <img src="/notebookLaptop.jpg" alt="Professional workspace" className="trusted-laptop-img" />
+              <div className="trusted-image">
+                <div className="trusted-image-card">
+                  <img src="/notebookLaptop.jpg" alt="Professional workspace" className="trusted-laptop-img" />
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -265,37 +296,109 @@ function HomePage() {
       <section className="home-portfolio-section">
         <div className="home-container">
           <h2 className="portfolio-title">Our Portfolio</h2>
-          <div className="portfolio-carousel">
-            <button className="portfolio-nav portfolio-nav-prev">‹</button>
-            <div className="portfolio-track">
+
+          <div className="slider-container">
+            <Slider {...settings}>
+              {/* Card 1 */}
               <div className="portfolio-card">
+                <div className='card-Img'>
+
+                  <img src="/portfolio-1.png" alt="AI Chatbot" />
+                </div>
                 <div className="portfolio-card-content">
-                  <h3>Fintech Platform</h3>
+                  <h3>AI Chatbot</h3>
                   <p>for Stock Analyst Ratings and Fundamental Analysis</p>
                 </div>
               </div>
+
+              {/* Card 2 */}
               <div className="portfolio-card">
+                <div className='card-Img'>
+
+                  <img src="/portfolio-2.png" alt="Bookkeeping" />
+                </div>
                 <div className="portfolio-card-content">
-                  <h3>Mobile App</h3>
+                  <h3>Bookkeeping & Ledger Management</h3>
                   <p>Cross-platform solution for enterprise communication</p>
                 </div>
               </div>
+
+              {/* Card 2.1 */}
               <div className="portfolio-card">
+                <div className='card-Img'>
+                  <img src="/portfolio-2.1.png" alt="Bookkeeping" />
+
+                </div>
                 <div className="portfolio-card-content">
-                  <h3>E-Commerce Platform</h3>
+                  <h3>Bookkeeping & Ledger Management</h3>
+                  <p>Cross-platform solution for enterprise communication</p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="portfolio-card">
+                <div className='card-Img'>
+                  <img src="/portfolio-3.png" alt="Financial Reporting" />
+                </div>
+                <div className="portfolio-card-content">
+                  <h3>Financial Reporting & Analysis</h3>
                   <p>Full-stack solution with inventory management</p>
                 </div>
               </div>
-            </div>
-            <button className="portfolio-nav portfolio-nav-next">›</button>
+
+              {/* Card 4 */}
+              <div className="portfolio-card">
+                <div className='card-Img'>
+
+                  <img src="/portfolio-4.png" alt="Another Project" />
+                </div>
+                <div className="portfolio-card-content">
+                  <h3>Tax Planning & Compliance</h3>
+                  <p>Custom enterprise-grade solution</p>
+                </div>
+              </div>
+              {/* Card 5  */}
+              <div className="portfolio-card">
+                <div className='card-Img'>
+
+                  <img src="/portfolio-5.png" alt="Another Project" />
+                </div>
+                <div className="portfolio-card-content">
+                  <h3> Payroll Processing</h3>
+                  <p>Custom enterprise-grade solution</p>
+                </div>
+              </div>
+              {/* Card 6  */}
+              <div className="portfolio-card">
+                <div className='card-Img'>
+
+                  <img src="/portfolio-6.png" alt="Another Project" />
+                </div>
+                <div className="portfolio-card-content">
+                  <h3>Truck Dispatching & Trucking Services</h3>
+                  <p>Custom enterprise-grade solution</p>
+                </div>
+              </div>
+              {/* Card 7  */}
+              <div className="portfolio-card">
+                <div className='card-Img'>
+
+                  <img src="/portfolio-7.png" alt="Another Project" />
+                </div>
+                <div className="portfolio-card-content">
+                  <h3>Social Media Management</h3>
+                  <p>Custom enterprise-grade solution</p>
+                </div>
+              </div>
+            </Slider>
           </div>
         </div>
       </section>
 
       {/* Testimonial Section */}
       <section className="home-testimonial-section">
-        <div 
-          className="testimonial-bg-map" 
+        <div
+          className="testimonial-bg-map"
           style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/worldMap.png)` }}
         ></div>
         <div className="home-container">
@@ -385,7 +488,7 @@ function HomePage() {
         <div className="home-container">
           <h2 className="section-heading">Get In Touch</h2>
           <p className="section-subheading">Ready to transform your business? Contact us today</p>
-          
+
           <div className="contact-cards-grid">
             <div className="home-contact-card">
               <div className="contact-card-icon">📞</div>
@@ -404,7 +507,7 @@ function HomePage() {
             </div>
           </div>
 
-          <button 
+          <button
             className="home-btn-primary contact-main-btn"
             onClick={() => setIsContactModalOpen(true)}
           >
@@ -415,9 +518,9 @@ function HomePage() {
       </section>
 
       {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
       />
 
       {/* Footer */}
