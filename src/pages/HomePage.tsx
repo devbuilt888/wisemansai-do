@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 import ContactModal from '../components/ContactModal';
+import AnimatedCounter from '../components/AnimatedCounter';
+import ExpandableSection from '../components/ExpandableSection';
+import { technologyServices, businessServices } from '../data/servicesData';
 import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +12,15 @@ import Slider from "react-slick";
 function HomePage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [businessFormData, setBusinessFormData] = useState({
+    service: '',
+    name: '',
+    email: '',
+    phone: '',
+    organization: '',
+    comments: ''
+  });
+  const [businessFormStatus, setBusinessFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const heroImages = [
     { src: '/jumboPicture1Wise.png', alt: 'Professional business services' },
@@ -39,6 +51,52 @@ function HomePage() {
     const contactSection = document.getElementById('contact-new');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleBusinessFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setBusinessFormData({ ...businessFormData, [e.target.name]: e.target.value });
+  };
+
+  const handleBusinessFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusinessFormStatus('sending');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mgoovyle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service: businessFormData.service,
+          name: businessFormData.name,
+          email: businessFormData.email,
+          phone: businessFormData.phone,
+          organization: businessFormData.organization,
+          message: businessFormData.comments,
+        }),
+      });
+
+      if (response.ok) {
+        setBusinessFormStatus('success');
+        setBusinessFormData({
+          service: '',
+          name: '',
+          email: '',
+          phone: '',
+          organization: '',
+          comments: ''
+        });
+        setTimeout(() => setBusinessFormStatus('idle'), 5000);
+      } else {
+        setBusinessFormStatus('error');
+        setTimeout(() => setBusinessFormStatus('idle'), 5000);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setBusinessFormStatus('error');
+      setTimeout(() => setBusinessFormStatus('idle'), 5000);
     }
   };
 
@@ -127,6 +185,7 @@ function HomePage() {
               ))}
             </div>
           </div>
+          {/* Dots navigation - commented out
           <div className="home-hero-dots">
             {heroImages.map((_, index) => (
               <span
@@ -136,6 +195,7 @@ function HomePage() {
               />
             ))}
           </div>
+          */}
         </div>
       </section>
 
@@ -214,10 +274,18 @@ function HomePage() {
             </div>
           </div>
           <div className="services-grid-cta">
-            <Link to="/original" className="view-all-services-btn">
+            <button 
+              className="view-all-services-btn"
+              onClick={() => {
+                const servicesSection = document.getElementById('full-services');
+                if (servicesSection) {
+                  servicesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               View All Services
               <span className="btn-arrow">→</span>
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -227,14 +295,14 @@ function HomePage() {
         <div className="home-container">
           <h2 className="industries-title">Industries we are serving</h2>
           <div className="industries-grid">
-            <div className="industry-card light-red">
+            <div className="industry-card light-blue">
               <div className="industry-icon">🚗</div>
               <div className="industry-content">
                 <h3>Automotive</h3>
                 <p>We develop solutions for the auto industry ranging from online marketplaces and auction systems to inspection apps and lead generation tools.</p>
               </div>
             </div>
-            <div className="industry-card dark-red">
+            <div className="industry-card dark-blue">
               <div className="industry-icon">💳</div>
               <div className="industry-content">
                 <h3>Fintech</h3>
@@ -275,7 +343,9 @@ function HomePage() {
             <div className="stats-highlight-card">
               <div className="stats-card-overlay"></div>
               <div className="stats-card-content">
-                <span className="stats-big-number">200+</span>
+                <span className="stats-big-number">
+                  <AnimatedCounter end={250} duration={2500} />
+                </span>
                 <h3>Satisfied Clients</h3>
                 <p>Our clients range from early stage startups to Fortune500 companies across the world.</p>
               </div>
@@ -283,9 +353,21 @@ function HomePage() {
             <div className="stats-highlight-card">
               <div className="stats-card-overlay"></div>
               <div className="stats-card-content">
-                <span className="stats-big-number">450+</span>
+                <span className="stats-big-number">
+                  <AnimatedCounter end={650} duration={2500} />
+                </span>
                 <h3>Projects Completed</h3>
                 <p>We have delivered IT projects ranging from enterprise solutions to mobile apps on time, on budget, and on value.</p>
+              </div>
+            </div>
+            <div className="stats-highlight-card third-stat">
+              <div className="stats-card-overlay"></div>
+              <div className="stats-card-content">
+                <span className="stats-big-number">
+                  <AnimatedCounter end={25} duration={2000} />
+                </span>
+                <h3>Countries Served</h3>
+                <p>Delivering global solutions with local expertise across continents.</p>
               </div>
             </div>
           </div>
@@ -421,9 +503,15 @@ function HomePage() {
       <section className="home-form-section">
         <div className="home-container">
           <h2 className="form-section-title">Let's talk about how we can help your business</h2>
-          <form className="business-form" onSubmit={(e) => { e.preventDefault(); setIsContactModalOpen(true); }}>
+          <form className="business-form" onSubmit={handleBusinessFormSubmit}>
             <div className="form-row full">
-              <select className="form-select" defaultValue="">
+              <select 
+                className="form-select" 
+                name="service"
+                value={businessFormData.service}
+                onChange={handleBusinessFormChange}
+                disabled={businessFormStatus === 'sending'}
+              >
                 <option value="" disabled>How we can help?</option>
                 <option value="web">Web Development</option>
                 <option value="mobile">Mobile App Development</option>
@@ -434,23 +522,102 @@ function HomePage() {
               </select>
             </div>
             <div className="form-row">
-              <input type="text" placeholder="Name" className="form-input" />
-              <input type="email" placeholder="Email" className="form-input" />
+              <input 
+                type="text" 
+                placeholder="Name" 
+                className="form-input" 
+                name="name"
+                value={businessFormData.name}
+                onChange={handleBusinessFormChange}
+                required
+                disabled={businessFormStatus === 'sending'}
+              />
+              <input 
+                type="email" 
+                placeholder="Email" 
+                className="form-input" 
+                name="email"
+                value={businessFormData.email}
+                onChange={handleBusinessFormChange}
+                required
+                disabled={businessFormStatus === 'sending'}
+              />
             </div>
             <div className="form-row">
-              <input type="tel" placeholder="Phone" className="form-input" />
-              <input type="text" placeholder="Organization" className="form-input" />
+              <input 
+                type="tel" 
+                placeholder="Phone" 
+                className="form-input" 
+                name="phone"
+                value={businessFormData.phone}
+                onChange={handleBusinessFormChange}
+                disabled={businessFormStatus === 'sending'}
+              />
+              <input 
+                type="text" 
+                placeholder="Organization" 
+                className="form-input" 
+                name="organization"
+                value={businessFormData.organization}
+                onChange={handleBusinessFormChange}
+                disabled={businessFormStatus === 'sending'}
+              />
             </div>
             <div className="form-row full">
-              <textarea placeholder="Comments..." className="form-textarea" rows={6}></textarea>
+              <textarea 
+                placeholder="Comments..." 
+                className="form-textarea" 
+                rows={6}
+                name="comments"
+                value={businessFormData.comments}
+                onChange={handleBusinessFormChange}
+                required
+                disabled={businessFormStatus === 'sending'}
+              ></textarea>
             </div>
             <div className="form-row full">
-              <button type="submit" className="form-submit-btn">
-                Send Message
-                <span className="btn-arrow">→</span>
+              <button 
+                type="submit" 
+                className="form-submit-btn"
+                disabled={businessFormStatus === 'sending'}
+              >
+                {businessFormStatus === 'sending' ? 'Sending...' : 'Send Message'}
+                {businessFormStatus === 'idle' && <span className="btn-arrow">→</span>}
               </button>
             </div>
+            {businessFormStatus === 'success' && (
+              <div className="form-message success">
+                ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+              </div>
+            )}
+            {businessFormStatus === 'error' && (
+              <div className="form-message error">
+                ✗ Something went wrong. Please try again or contact us directly.
+              </div>
+            )}
           </form>
+        </div>
+      </section>
+
+      {/* Full Services Section */}
+      <section id="full-services" className="home-full-services-section">
+        <div className="home-container">
+          <h2 className="full-services-title">Our Services</h2>
+          <p className="full-services-subtitle">
+            Comprehensive solutions across technology, business, and operations
+          </p>
+          
+          <ExpandableSection 
+            title="Technology & Digital Solutions" 
+            icon="💻" 
+            services={technologyServices} 
+          />
+          
+          <ExpandableSection 
+            title="Business, Marketing & Operations" 
+            icon="📊" 
+            services={businessServices} 
+          />
         </div>
       </section>
 

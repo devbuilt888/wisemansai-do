@@ -1,0 +1,329 @@
+/* Expandable Section Styles - Modern Design */
+.expandable-section {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  color: #ffffff;
+}
+
+.section-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.section-header.expanded {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+
+.section-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.section-title {
+  flex: 1;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-chevron {
+  font-size: 1rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.8;
+}
+
+.section-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.section-content {
+  padding: 2rem;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-block {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.service-block:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.service-block:last-child {
+  margin-bottom: 0;
+}
+
+.service-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.service-header:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0.1) 100%);
+  border-color: rgba(37, 99, 235, 0.5);
+  transform: translateX(5px);
+}
+
+.service-header.active {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border-color: #2563eb;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.service-number {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #60a5fa;
+  min-width: 30px;
+}
+
+.service-header.active .service-number {
+  color: #ffffff;
+}
+
+.service-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #e2e8f0;
+}
+
+.service-header.active .service-name {
+  color: #ffffff;
+}
+
+.service-chevron {
+  font-size: 1.4rem;
+  color: #60a5fa;
+  transition: transform 0.3s ease;
+  font-weight: bold;
+}
+
+.service-header.active .service-chevron {
+  color: #ffffff;
+}
+
+.service-chevron.rotated {
+  transform: rotate(90deg);
+}
+
+.service-desc {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+.service-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.98);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+.category-block {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.category-block:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.category-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #60a5fa;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(37, 99, 235, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-title::before {
+  content: '◆';
+  font-size: 0.6rem;
+  color: #2563eb;
+}
+
+.category-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-items li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+.category-items li:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.category-items li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.category-items li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .service-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .section-icon {
+    font-size: 1.5rem;
+  }
+
+  .section-content {
+    padding: 1.25rem;
+  }
+
+  .service-block {
+    padding: 1rem;
+  }
+
+  .service-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .service-name {
+    font-size: 1rem;
+  }
+
+  .service-details {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .category-block {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  .section-icon {
+    font-size: 1.25rem;
+  }
+
+  .service-header {
+    padding: 0.75rem;
+  }
+
+  .service-number {
+    font-size: 1rem;
+    min-width: 24px;
+  }
+
+  .service-name {
+    font-size: 0.9rem;
+  }
+
+  .category-items li {
+    font-size: 0.85rem;
+  }
+}
