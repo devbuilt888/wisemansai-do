@@ -104,7 +104,7 @@ function HomePage() {
     dots: true,
     infinite: true,
     speed: 2000,
-    autoplay:true,
+    autoplay: true,
     slidesToShow: 3,
     centerPadding: "60px",
     centerMode: true,
@@ -125,6 +125,14 @@ function HomePage() {
           slidesToScroll: 1,
         },
       },
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerPadding: "2px"
+        },
+      },
     ],
   };
 
@@ -138,8 +146,48 @@ function HomePage() {
             <span className="home-logo-text">The WiseWay Solutions</span>
           </div>
           <nav className="home-nav-menu">
+            {/* ABOUT WITH DROPDOWN */}
+            <div className="nav-item">
+              <a href="#about" className="home-nav-link">
+                About
+              </a>
+
+              <div className="dropdown-menu">
+                <a href="#company-profile">Company Profile</a>
+                <Link to="/our-team">Our Team</Link>
+                <a href="#methodology">Our Methodology</a>
+                <a href="/careers">Careers</a>
+              </div>
+            </div>
+            <div className="nav-item">
+              <a href="#industries" className="home-nav-link">
+              Industries
+              </a>
+
+              <div className="dropdown-menu">
+                <a href="#auto-tech">AutoTech</a>
+                <a href="#fin-tech">FinTech</a>
+                <a href="#food-tech">FoodTech</a>
+                <a href="/health-care">HealthCare</a>
+                <a href="/construction">Construction</a>
+              </div>
+            </div>
+            <div className="nav-item">
+              <a href="#resources" className="home-nav-link">
+              Resources
+              </a>
+
+              <div className="dropdown-menu">
+                <a href="#insights">Insights</a>
+                <a href="#case-study">Case Study</a>
+                <a href="#blog">Blog</a>
+              </div>
+            </div>
+
+            {/* <a href="#industries" className="home-nav-link">Industries</a> */}
+            {/* <a href="#resources" className="home-nav-link">Resources</a> */}
+            <a href="#portfolio" className="home-nav-link">Protfolio</a>
             <Link to="/original" className="home-nav-link">Services</Link>
-            <a href="#about" className="home-nav-link">About</a>
             <a href="#contact-new" className="home-nav-link" onClick={scrollToContact}>Contact</a>
           </nav>
           <button className="home-cta-button" onClick={scrollToContact}>Get Started</button>
@@ -274,7 +322,7 @@ function HomePage() {
             </div>
           </div>
           <div className="services-grid-cta">
-            <button 
+            <button
               className="view-all-services-btn"
               onClick={() => {
                 const servicesSection = document.getElementById('full-services');
@@ -505,8 +553,8 @@ function HomePage() {
           <h2 className="form-section-title">Let's talk about how we can help your business</h2>
           <form className="business-form" onSubmit={handleBusinessFormSubmit}>
             <div className="form-row full">
-              <select 
-                className="form-select" 
+              <select
+                className="form-select"
                 name="service"
                 value={businessFormData.service}
                 onChange={handleBusinessFormChange}
@@ -522,20 +570,20 @@ function HomePage() {
               </select>
             </div>
             <div className="form-row">
-              <input 
-                type="text" 
-                placeholder="Name" 
-                className="form-input" 
+              <input
+                type="text"
+                placeholder="Name"
+                className="form-input"
                 name="name"
                 value={businessFormData.name}
                 onChange={handleBusinessFormChange}
                 required
                 disabled={businessFormStatus === 'sending'}
               />
-              <input 
-                type="email" 
-                placeholder="Email" 
-                className="form-input" 
+              <input
+                type="email"
+                placeholder="Email"
+                className="form-input"
                 name="email"
                 value={businessFormData.email}
                 onChange={handleBusinessFormChange}
@@ -544,19 +592,19 @@ function HomePage() {
               />
             </div>
             <div className="form-row">
-              <input 
-                type="tel" 
-                placeholder="Phone" 
-                className="form-input" 
+              <input
+                type="tel"
+                placeholder="Phone"
+                className="form-input"
                 name="phone"
                 value={businessFormData.phone}
                 onChange={handleBusinessFormChange}
                 disabled={businessFormStatus === 'sending'}
               />
-              <input 
-                type="text" 
-                placeholder="Organization" 
-                className="form-input" 
+              <input
+                type="text"
+                placeholder="Organization"
+                className="form-input"
                 name="organization"
                 value={businessFormData.organization}
                 onChange={handleBusinessFormChange}
@@ -564,9 +612,9 @@ function HomePage() {
               />
             </div>
             <div className="form-row full">
-              <textarea 
-                placeholder="Comments..." 
-                className="form-textarea" 
+              <textarea
+                placeholder="Comments..."
+                className="form-textarea"
                 rows={6}
                 name="comments"
                 value={businessFormData.comments}
@@ -576,8 +624,8 @@ function HomePage() {
               ></textarea>
             </div>
             <div className="form-row full">
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="form-submit-btn"
                 disabled={businessFormStatus === 'sending'}
               >
@@ -606,17 +654,17 @@ function HomePage() {
           <p className="full-services-subtitle">
             Comprehensive solutions across technology, business, and operations
           </p>
-          
-          <ExpandableSection 
-            title="Technology & Digital Solutions" 
-            icon="💻" 
-            services={technologyServices} 
+
+          <ExpandableSection
+            title="Technology & Digital Solutions"
+            icon="💻"
+            services={technologyServices}
           />
-          
-          <ExpandableSection 
-            title="Business, Marketing & Operations" 
-            icon="📊" 
-            services={businessServices} 
+
+          <ExpandableSection
+            title="Business, Marketing & Operations"
+            icon="📊"
+            services={businessServices}
           />
         </div>
       </section>
