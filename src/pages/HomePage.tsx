@@ -6,6 +6,7 @@ import AnimatedCounter from '../components/AnimatedCounter';
 import ExpandableSection from '../components/ExpandableSection';
 import { technologyServices, businessServices } from '../data/servicesData';
 import Slider from "react-slick";
+import TestimonialCarousel from '../components/Testimonial';
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
@@ -142,14 +143,15 @@ function HomePage() {
       <header className="home-header">
         <div className="home-nav-container">
           <div className="home-logo">
-            <img src="/thewisewayLogo.png" alt="The WiseWay Solutions" className="home-logo-icon" />
+            {/* <img src="/thewisewayLogo.png" alt="The WiseWay Solutions" className="home-logo-icon" /> */}
+            <img src="./NewLogo/favImg-cpy.jpg" alt="The WiseWay Solutions" className="home-logo-icon" />
             <span className="home-logo-text">The WiseWay Solutions</span>
           </div>
           <nav className="home-nav-menu">
             {/* ABOUT WITH DROPDOWN */}
             <div className="nav-item">
               <a href="#about" className="home-nav-link">
-                About
+                About <img src="/down-chevron.png" style={{width:'10px', margin:'5px'}} alt="down_arrow" />
               </a>
 
               <div className="dropdown-menu">
@@ -159,9 +161,12 @@ function HomePage() {
                 <a href="/careers">Careers</a>
               </div>
             </div>
+            {/* Services */}
+            <Link to="/original" className="home-nav-link">Services</Link>
+            {/* Industry */}
             <div className="nav-item">
               <a href="#industries" className="home-nav-link">
-              Industries
+                Industry <img src="/down-chevron.png" style={{width:'10px', margin:'5px'}} alt="down_arrow" />
               </a>
 
               <div className="dropdown-menu">
@@ -172,9 +177,13 @@ function HomePage() {
                 <a href="/construction">Construction</a>
               </div>
             </div>
+            {/* Resources */}
             <div className="nav-item">
+              {/* <a href="#resources" className="home-nav-link">
+                Resources
+              </a> */}
               <a href="#resources" className="home-nav-link">
-              Resources
+                Insight <img src="/down-chevron.png" style={{width:'10px', margin:'5px'}} alt="down_arrow" />
               </a>
 
               <div className="dropdown-menu">
@@ -186,8 +195,11 @@ function HomePage() {
 
             {/* <a href="#industries" className="home-nav-link">Industries</a> */}
             {/* <a href="#resources" className="home-nav-link">Resources</a> */}
-            <a href="#portfolio" className="home-nav-link">Protfolio</a>
-            <Link to="/original" className="home-nav-link">Services</Link>
+            
+            {/* Portfolio */}
+            {/* <a href="#portfolio" className="home-nav-link">Protfolio</a> */}
+
+            {/* Contact */}
             <a href="#contact-new" className="home-nav-link" onClick={scrollToContact}>Contact</a>
           </nav>
           <button className="home-cta-button" onClick={scrollToContact}>Get Started</button>
@@ -213,7 +225,7 @@ function HomePage() {
             </p>
             <div className="home-hero-buttons">
               <button className="home-btn-primary" onClick={scrollToContact}>
-                Get Started
+                Get Free Consultation
                 <span className="btn-arrow">→</span>
               </button>
               <Link to="/original" className="home-btn-secondary">
@@ -526,7 +538,7 @@ function HomePage() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="home-testimonial-section">
+      {/* <section className="home-testimonial-section">
         <div
           className="testimonial-bg-map"
           style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/worldMap.png)` }}
@@ -545,7 +557,8 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <TestimonialCarousel />
 
       {/* Contact Form Section */}
       <section className="home-form-section">
