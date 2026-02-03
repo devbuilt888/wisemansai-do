@@ -55,6 +55,13 @@ function HomePage() {
     }
   };
 
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('full-services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleBusinessFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setBusinessFormData({ ...businessFormData, [e.target.name]: e.target.value });
   };
@@ -162,7 +169,7 @@ function HomePage() {
               </div>
             </div>
             {/* Services */}
-            <Link to="/original" className="home-nav-link">Services</Link>
+            <a href="#full-services" className="home-nav-link" onClick={(e) => { e.preventDefault(); scrollToServices(); }}>Services</a>
             {/* Industry */}
             <div className="nav-item">
               <a href="#industries" className="home-nav-link">
@@ -228,9 +235,9 @@ function HomePage() {
                 Get Free Consultation
                 <span className="btn-arrow">→</span>
               </button>
-              <Link to="/original" className="home-btn-secondary">
+              <button type="button" className="home-btn-secondary" onClick={scrollToServices}>
                 View Our Services
-              </Link>
+              </button>
             </div>
           </div>
           <div className="home-hero-image">
@@ -283,10 +290,10 @@ function HomePage() {
                   data analytics, and comprehensive business solutions. Our team of experts
                   delivers tailored solutions that drive growth and enhance brand visibility.
                 </p>
-                <Link to="/original" className="trusted-link">
+                <button type="button" className="trusted-link" onClick={scrollToServices}>
                   Explore Our Services
                   <span className="link-arrow">→</span>
-                </Link>
+                </button>
               </div>
               <div className="trusted-image">
                 <div className="trusted-image-card">
@@ -350,46 +357,64 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Industries Section */}
+      {/* Industries / Services We Offer Section */}
       <section className="home-industries-section">
         <div className="home-container">
-          <h2 className="industries-title">Industries we are serving</h2>
+          <div className="industries-header-row">
+            <h2 className="industries-title">Services we offer</h2>
+            <button
+              type="button"
+              className="industries-services-btn"
+              onClick={() => {
+                const servicesSection = document.getElementById('full-services');
+                if (servicesSection) {
+                  servicesSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              Our Services
+              <span className="btn-arrow">→</span>
+            </button>
+          </div>
+          <p className="industries-subtitle">
+            Comprehensive solutions across technology, business, and operations—aligned with what we deliver.
+          </p>
           <div className="industries-grid">
             <div className="industry-card light-blue">
-              <div className="industry-icon">🚗</div>
+              <div className="industry-icon">💻</div>
               <div className="industry-content">
-                <h3>Automotive</h3>
-                <p>We develop solutions for the auto industry ranging from online marketplaces and auction systems to inspection apps and lead generation tools.</p>
+                <h3>Technology & Digital</h3>
+                <p>Chatbot development, websites, mobile apps, SEO, YouTube & TikTok automation, AI business consulting, and custom software—built for performance and scale.</p>
               </div>
             </div>
             <div className="industry-card dark-blue">
-              <div className="industry-icon">💳</div>
+              <div className="industry-icon">📊</div>
               <div className="industry-content">
-                <h3>Fintech</h3>
-                <p>Our Fintech Solutions span payments, wealth management, stock market tools and digital ledger technology applications built with state-of-the-art technologies.</p>
+                <h3>Accounting & Finance</h3>
+                <p>Bookkeeping, financial reporting, tax planning & compliance, and payroll processing—accurate, compliant, and insight-driven.</p>
               </div>
             </div>
             <div className="industry-card white">
-              <div className="industry-icon">🍔</div>
+              <div className="industry-icon">📱</div>
               <div className="industry-content">
-                <h3>Foodtech</h3>
-                <p>We have built custom food-delivery and restaurant management solutions for some of the most innovative food-tech startups in Europe and Asia.</p>
+                <h3>Marketing & Creative</h3>
+                <p>Social media management, poster & video creation, and content writing & blogging—strategic content and measurable growth.</p>
               </div>
             </div>
           </div>
           <div className="industries-grid-row-2">
             <div className="industry-card white">
-              <div className="industry-icon">🏥</div>
+              <div className="industry-icon">💼</div>
               <div className="industry-content">
-                <h3>Healthcare</h3>
-                <p>We help healthcare and home care providers deliver better patient care through innovative products and services compliant with both local global regulations and standards.</p>
+                <h3>Sales & Lead Generation</h3>
+                <p>Data-driven lead generation, outreach & follow-ups, sales funnel setup, and cold calling & appointments—focused on conversion.</p>
               </div>
             </div>
             <div className="industry-card white">
-              <div className="industry-icon">🏗️</div>
+              <div className="industry-icon">🤝</div>
               <div className="industry-content">
-                <h3>Construction</h3>
-                <p>Our digital solutions for construction industry provide Integrated Labor Delivery and Workforce Management, improving processes and productivity.</p>
+                <h3>Operations & Support</h3>
+                <p>Customer support, MS Office & Excel solutions, truck dispatching & trucking services, and medical billing—reliable and professional.</p>
               </div>
             </div>
           </div>
@@ -721,17 +746,17 @@ function HomePage() {
             <div className="home-contact-card">
               <div className="contact-card-icon">📞</div>
               <h3>Phone</h3>
-              <p>+92 333 4250848</p>
+              <p>+92 333 4250848, +92 340 5149249</p>
             </div>
             <div className="home-contact-card">
               <div className="contact-card-icon">✉️</div>
               <h3>Email</h3>
-              <p>Wisewaysolutionspk@gmail.com</p>
+              <p>care@thewisewaysolutions.com</p>
             </div>
             <div className="home-contact-card">
               <div className="contact-card-icon">🌍</div>
               <h3>Locations</h3>
-              <p>Pakistan, USA & UK</p>
+              <p>USA and Pakistan</p>
             </div>
           </div>
 
@@ -765,13 +790,13 @@ function HomePage() {
             <div className="footer-links-section">
               <div className="footer-link-column">
                 <h4>Services</h4>
-                <Link to="/original">All Services</Link>
+                <a href="#full-services" onClick={(e) => { e.preventDefault(); scrollToServices(); }}>All Services</a>
                 <a href="#about">About Us</a>
               </div>
               <div className="footer-link-column">
                 <h4>Contact</h4>
                 <a href="#contact-new" onClick={scrollToContact}>Get in Touch</a>
-                <a href="mailto:Wisewaysolutionspk@gmail.com">Email Us</a>
+                <a href="mailto:care@thewisewaysolutions.com">Email Us</a>
               </div>
             </div>
           </div>
