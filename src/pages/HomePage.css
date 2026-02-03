@@ -47,20 +47,31 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  /* border-radius: 30px; */
-  overflow: hidden;
   left: 0;
-  margin-top: 5px;
+  margin-top: 10px;
   width: 260px;
   background-color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  display: none;
   z-index: 1000;
+  
+  /* overflow: hidden; */
+  /* border-radius: 30px; */
+  /* display: none; */
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
 }
 
 /* Show dropdown on hover */
 .nav-item:hover .dropdown-menu {
-  display: block;
+  /* display: block; */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 /* Add hover-safe padding bridge */
 .dropdown-menu::before {
