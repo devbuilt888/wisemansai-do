@@ -7,6 +7,7 @@ import ExpandableSection from '../components/ExpandableSection';
 import { technologyServices, businessServices } from '../data/servicesData';
 import Slider from "react-slick";
 import TestimonialCarousel from '../components/Testimonial';
+import Header from '../components/Header';
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
@@ -147,71 +148,7 @@ function HomePage() {
   return (
     <div className="home-page">
       {/* Navigation */}
-      <header className="home-header">
-        <div className="home-nav-container">
-          <div className="home-logo">
-            {/* <img src="/thewisewayLogo.png" alt="The WiseWay Solutions" className="home-logo-icon" /> */}
-            <img src="./NewLogo/favImg-cpy.jpg" alt="The WiseWay Solutions" className="home-logo-icon" />
-            <span className="home-logo-text">The WiseWay Solutions</span>
-          </div>
-          <nav className="home-nav-menu">
-            {/* ABOUT WITH DROPDOWN */}
-            <div className="nav-item">
-              <a href="#about" className="home-nav-link">
-                About <img src="/down-chevron.png" style={{width:'10px', margin:'5px'}} alt="down_arrow" />
-              </a>
-
-              <div className="dropdown-menu">
-                <a href="#company-profile">Company Profile</a>
-                <Link to="/our-team">Our Team</Link>
-                <a href="#methodology">Our Methodology</a>
-                <a href="/careers">Careers</a>
-              </div>
-            </div>
-            {/* Services */}
-            <a href="#full-services" className="home-nav-link" onClick={(e) => { e.preventDefault(); scrollToServices(); }}>Services</a>
-            {/* Industry */}
-            <div className="nav-item">
-              <a href="#industries" className="home-nav-link">
-                Industry <img src="/down-chevron.png" style={{width:'10px', margin:'5px'}} alt="down_arrow" />
-              </a>
-
-              <div className="dropdown-menu">
-                <a href="#auto-tech">AutoTech</a>
-                <a href="#fin-tech">FinTech</a>
-                <a href="#food-tech">FoodTech</a>
-                <a href="/health-care">HealthCare</a>
-                <a href="/construction">Construction</a>
-              </div>
-            </div>
-            {/* Resources */}
-            <div className="nav-item">
-              {/* <a href="#resources" className="home-nav-link">
-                Resources
-              </a> */}
-              <a href="#resources" className="home-nav-link">
-                Insight <img src="/down-chevron.png" style={{width:'10px', margin:'5px'}} alt="down_arrow" />
-              </a>
-
-              <div className="dropdown-menu">
-                <a href="#insights">Insights</a>
-                <a href="#case-study">Case Study</a>
-                <a href="#blog">Blog</a>
-              </div>
-            </div>
-
-            {/* <a href="#industries" className="home-nav-link">Industries</a> */}
-            {/* <a href="#resources" className="home-nav-link">Resources</a> */}
-            
-            {/* Portfolio */}
-            {/* <a href="#portfolio" className="home-nav-link">Protfolio</a> */}
-
-            {/* Contact */}
-            <a href="#contact-new" className="home-nav-link" onClick={scrollToContact}>Contact</a>
-          </nav>
-          <button className="home-cta-button" onClick={scrollToContact}>Get Started</button>
-        </div>
-      </header>
+      {/* <Header /> */}
 
       {/* Hero Section */}
       <section className="home-hero">
@@ -778,33 +715,108 @@ function HomePage() {
 
       {/* Footer */}
       <footer className="home-footer">
-        <div className="home-container">
-          <div className="footer-grid">
-            <div className="footer-brand-section">
-              <div className="home-logo">
-                <img src="/thewisewayLogo.png" alt="The WiseWay Solutions" className="home-logo-icon" />
-                <span className="home-logo-text">The WiseWay Solutions</span>
-              </div>
-              <p className="footer-tagline">Empowering businesses through innovative solutions</p>
+        <div className="home-container footer-grid">
+
+          {/* Brand / Logo */}
+          <div className="footer-brand-section">
+            <div className="home-logo-footer">
+              <img
+                src="/thewisewayLogo.png"
+                alt="The WiseWay Solutions"
+                className="home-logo-icon"
+              />
+              <span className="home-logo-text">The WiseWay Solutions</span>
             </div>
-            <div className="footer-links-section">
-              <div className="footer-link-column">
-                <h4>Services</h4>
-                <a href="#full-services" onClick={(e) => { e.preventDefault(); scrollToServices(); }}>All Services</a>
-                <a href="#about">About Us</a>
-              </div>
-              <div className="footer-link-column">
-                <h4>Contact</h4>
-                <a href="#contact-new" onClick={scrollToContact}>Get in Touch</a>
-                <a href="mailto:care@thewisewaysolutions.com">Email Us</a>
-              </div>
-            </div>
+            <p className="footer-tagline">
+              Empowering businesses through innovative solutions
+            </p>
           </div>
-          <div className="footer-bottom-section">
-            <p>&copy; 2024 The WiseWay Solutions. All rights reserved.</p>
+
+          {/* Services */}
+          <div className='links-section'>
+            <div className="footer-link-column">
+              <h4>Services</h4>
+
+              <strong>Digital</strong>
+              <a>Digital Consulting & Strategy</a>
+              <a>Digital Commerce</a>
+              <a>Business Applications</a>
+
+              <div className="footer-link-column">
+                <strong>Data & Analytics</strong>
+                <a>Data Modernization</a>
+                <a>Advanced Analytics</a>
+                <a>Connected Intelligence</a>
+                <a>Data Management</a>
+                <a>Generative AI</a>
+              </div>
+            </div>
+
+            {/* Cloud & Infrastructure */}
+            <div className="footer-link-column">
+              <h4>&nbsp;</h4>
+
+              <strong>Cloud</strong>
+              <a>Cloud Operations & Migration</a>
+              <a>Cloud Applications</a>
+              <a>Development & Integrations</a>
+              <a>Managed Services</a>
+
+              <div className="footer-link-column">
+                <strong>Digital Infrastructure Services</strong>
+                <a>Security</a>
+                <a className="highlight">Emerging Technologies</a>
+                <a>Business Process Services</a>
+              </div>
+            </div>
+
+            {/* Industries */}
+            <div className="footer-link-column">
+              <h4>Industries</h4>
+              <a>Communications</a>
+              <a>Banking & Financial Services</a>
+              <a>Public Sector</a>
+              <a>Health</a>
+              <a>Retail</a>
+            </div>
+
+            {/* Insights */}
+            <div className="footer-link-column">
+              <h4>Insights</h4>
+              <a>Case Studies</a>
+              <a>Newsroom</a>
+              <a>Whitepapers / EBooks</a>
+              <a>Blogs</a>
+            </div>
+
+            {/* Quick Links */}
+            <div className="footer-link-column">
+              <h4>Quick Links</h4>
+              <a href="#about">Who we are</a>
+              <a>Careers</a>
+              <a>Our Leadership</a>
+              <a>Investor Relation</a>
+              <a>Financial Reports</a>
+            </div>
           </div>
         </div>
+
+        {/* Subscribe */}
+        <div className="footer-subscribe">
+          <h4>Subscribe</h4>
+          <p>Stay updated on how the future of technology is shaping.</p>
+          <div className="subscribe-form">
+            <input type="email" placeholder="Enter your email here" />
+            <button>Submit</button>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="footer-bottom-section">
+          <p>&copy; 2024 The WiseWay Solutions. All rights reserved.</p>
+        </div>
       </footer>
+
     </div>
   );
 }

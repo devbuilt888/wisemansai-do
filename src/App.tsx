@@ -5,11 +5,13 @@ import OriginalPage from './pages/OriginalPage';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import OurTeam from './pages/OurTeam';
+import Header from './components/Header';
 
 
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/original" element={<OriginalPage />} />
