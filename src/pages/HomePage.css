@@ -97,6 +97,24 @@
   color: white;
 }
 
+/* Dropdown buttons (match links for Industry / Methodology modals) */
+.dropdown-menu-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 24px;
+  font-size: 14px;
+  color: #111827;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dropdown-menu-btn:hover {
+  background-color: #4073ad;
+  color: white;
+}
 
 .home-logo {
   display: flex;
@@ -2128,6 +2146,25 @@
 .footer-link-column a:hover::before {
   opacity: 1;
   left: 0;
+}
+
+.footer-link-btn {
+  display: block;
+  width: 100%;
+  text-align: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-link-btn:hover {
+  color: #60a5fa;
 }
 
 /* Trusted link arrow animation */

@@ -1,0 +1,150 @@
+.content-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.5rem;
+  animation: contentModalFadeIn 0.25s ease;
+}
+
+@keyframes contentModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.content-modal-box {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: contentModalSlideUp 0.3s ease;
+}
+
+@keyframes contentModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #555;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s;
+}
+
+.content-modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+.content-modal-header {
+  padding: 1.75rem 2rem 0;
+  padding-right: 3rem;
+}
+
+.content-modal-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.content-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.content-modal-body {
+  padding: 1.25rem 2rem 2rem;
+  overflow-y: auto;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.content-modal-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.content-modal-body h3:first-child {
+  margin-top: 0;
+}
+
+.content-modal-body p {
+  margin: 0 0 0.75rem;
+}
+
+.content-modal-body ul {
+  margin: 0.25rem 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.content-modal-body li {
+  margin-bottom: 0.35rem;
+}
+
+.content-modal-body .methodology-steps {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.content-modal-body .methodology-steps li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  border-left: 4px solid #1e40af;
+}
+
+.content-modal-body .methodology-steps strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #1a1a1a;
+}
+
+@media (max-width: 600px) {
+  .content-modal-box {
+    max-height: 90vh;
+  }
+  .content-modal-header,
+  .content-modal-body {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .content-modal-title {
+    font-size: 1.3rem;
+  }
+}

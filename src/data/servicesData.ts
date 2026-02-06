@@ -375,15 +375,80 @@ export const industries = [
 
 export const methodology = {
   title: "Our Methodology",
-  description: "Our methodology is designed to deliver high-quality, scalable, and reliable solutions by breaking each project into clear, manageable phases. We follow an agile-driven, collaborative approach that ensures transparency, flexibility, and continuous improvement throughout the project lifecycle.",
+  description: "We use Scrum and Agile practices to deliver high-quality, scalable solutions. Short iterations, continuous feedback, and cross-functional collaboration keep projects on track and aligned with your goals.",
   steps: [
-    { name: "Planning", desc: "We begin by understanding your business objectives, challenges, and success metrics." },
-    { name: "Requirement Analysis", desc: "Detailed requirement gathering to understand functional, technical, and operational needs." },
-    { name: "Prototyping", desc: "We create wireframes or prototypes to visualize the solution early in the process." },
-    { name: "Design & Architecture", desc: "We design scalable, secure, and performance-driven architectures." },
-    { name: "Development", desc: "Our developers build the solution using best practices and agile iterations." },
-    { name: "UAT", desc: "Thorough testing with real-world scenarios to ensure quality." },
-    { name: "Deployment & Support", desc: "We deploy and provide ongoing monitoring, support, and optimization." }
+    { name: "Sprint Planning", desc: "We agree on sprint goals and select backlog items as a team. Priorities are set collaboratively so every iteration delivers the highest value." },
+    { name: "Daily Stand-ups", desc: "Short, focused syncs to share progress, blockers, and next steps. Keeps the team aligned and surfaces issues early." },
+    { name: "Sprint Review & Demo", desc: "We demo working increments to stakeholders and gather feedback. Done work is shown in a real environment so you see progress every sprint." },
+    { name: "Retrospectives", desc: "After each sprint we reflect on what went well and what to improve. Process and quality get better over time." },
+    { name: "Backlog Refinement", desc: "We keep the product backlog ordered and ready. Stories are clarified, estimated, and broken down so development stays smooth." },
+    { name: "Incremental Delivery", desc: "We ship in small, shippable increments. You get working software often, with the option to release at the end of any sprint." },
+    { name: "Scrum Roles & Ceremonies", desc: "Clear roles (Product Owner, Scrum Master, Dev Team), time-boxed ceremonies, and visible artifacts (board, burndown) so everyone knows the status." }
   ]
+};
+
+export type IndustryModalId = 'fintech' | 'autotech' | 'foodtech' | 'healthcare' | 'construction';
+
+export const industryModalContent: Record<IndustryModalId, { title: string; icon: string; overview: string; howWeHelp: string[] }> = {
+  fintech: {
+    title: "FinTech",
+    icon: "💳",
+    overview: "The financial technology sector is transforming how people and businesses manage money, from digital payments and lending to wealth management and regulatory tech. FinTech companies need secure, compliant, and scalable solutions that can integrate with existing financial systems and meet strict regulatory requirements.",
+    howWeHelp: [
+      "Custom software and web apps for payments, dashboards, and client portals",
+      "AI chatbots and automation for customer support and lead qualification",
+      "Accounting, bookkeeping, and financial reporting to keep your back office in order",
+      "Secure, scalable architecture and integrations with banks and payment providers",
+      "SEO and digital presence so your FinTech product is discoverable and trusted"
+    ]
+  },
+  autotech: {
+    title: "AutoTech",
+    icon: "🚗",
+    overview: "AutoTech covers everything from vehicle marketplaces and fleet management to EV solutions, connected cars, and mobility apps. The industry is moving toward digital-first experiences, data-driven operations, and seamless online-to-offline journeys for buyers and operators.",
+    howWeHelp: [
+      "Web and mobile apps for car marketplaces, booking, inspections, and lead capture",
+      "Custom software for fleet management, dispatching, and logistics",
+      "Chatbots and automation for inquiries, appointments, and follow-ups",
+      "Data analytics, Excel solutions, and reporting for operations and sales",
+      "SEO and content to drive traffic and conversions in a competitive market"
+    ]
+  },
+  foodtech: {
+    title: "FoodTech",
+    icon: "🍔",
+    overview: "FoodTech includes delivery platforms, restaurant management systems, cloud kitchens, and food-related e-commerce. Success depends on smooth ordering, reliable operations, and strong visibility online—all while managing high volume and tight margins.",
+    howWeHelp: [
+      "Websites, ordering systems, and mobile apps for restaurants and delivery brands",
+      "Social media management and video content to build and engage your audience",
+      "Lead generation and sales outreach for B2B food and F&B suppliers",
+      "Customer support and order handling so your team can focus on operations",
+      "Accounting, invoicing, and reporting tailored to F&B and delivery businesses"
+    ]
+  },
+  healthcare: {
+    title: "Healthcare",
+    icon: "🏥",
+    overview: "Healthcare providers and health-tech companies need solutions that are secure, compliant, and built for patient care and operational efficiency. From clinics and telehealth to medical billing and health apps, the sector demands reliability and clear compliance with regulations.",
+    howWeHelp: [
+      "Web and app development for patient portals, booking, and telehealth experiences",
+      "Medical billing services, revenue cycle support, and insurance verification",
+      "AI chatbots for appointment scheduling, FAQs, and triage",
+      "Customer support and back-office automation so staff can focus on patients",
+      "Secure, scalable systems and integrations with existing practice management tools"
+    ]
+  },
+  construction: {
+    title: "Construction",
+    icon: "🏗️",
+    overview: "Construction and trades are digitizing project management, workforce scheduling, procurement, and client communication. Companies that adopt the right tools can reduce delays, control costs, and improve safety and compliance.",
+    howWeHelp: [
+      "Custom software for project management, scheduling, and resource allocation",
+      "Websites and portals for tenders, documentation, and client communication",
+      "Lead generation and outreach to win new projects and partnerships",
+      "Excel and Power BI solutions for costing, reporting, and dashboards",
+      "Accounting, payroll, and compliance support for contractors and subcontractors"
+    ]
+  }
 };
 

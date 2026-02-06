@@ -19,7 +19,7 @@ const teamMembers: TeamMember[] = [
         id: "asim",
         name: "Muhammad Asim Atta",
         role: "CEO & Co-Founder | CA Finalist | Accounting & Financial Automation Specialist",
-        image: "/muhammad-asim-atta.jpg",
+        image: "/team-asim.png",
         education:
             "CA Finalist, The Institute of Chartered Accountants of Pakistan (ICAP) | ITP | QuickBooks ProAdvisor",
         linkedin: "#",
@@ -36,7 +36,7 @@ Through his leadership at WiseWay, he continues to bridge accounting precision w
         id: "iker",
         name: "Iker Valverde",
         role: "Chief Technology Officer (CTO)",
-        image: "/iker-valverde.jpg",
+        image: "/team-iker.png",
         linkedin: "#",
         bio: `Iker Valverde is a highly experienced Senior Software Developer and Chief Technology Officer with deep expertise in building scalable, high-performance web applications. His core focus lies in crafting pixel-perfect, fast, and intuitive user experiences using modern JavaScript frameworks, particularly React.js, while maintaining robust and scalable system architectures.
 As a full-stack developer, Iker has a proven track record of rapidly designing, developing, and launching platforms from the ground up. He has contributed to healthcare and education platforms serving over 50 million users globally and has delivered impactful solutions for two Fortune 500 companies.
@@ -50,7 +50,7 @@ Driven by continuous learning and innovation, Iker combines hands-on technical l
         id: "raees",
         name: "Raees Ali",
         role: "Software Engineer | Front-End Web Developer",
-        image: "/raees-ali.jpg",
+        image: "/team-raees.png",
         education:
             "BS Software Engineering, Abbottabad University of Science & Technology (AUST)",
         linkedin: "#",
@@ -65,7 +65,7 @@ He has practical experience developing responsive layouts, dynamic interfaces, a
         id: "ayra",
         name: "Ayra Malik",
         role: "Business Development Executive (BDE)",
-        image: "/ayra-malik.jpg",
+        image: "/team-ayra.png",
         education:
             "MBA (HRM & Marketing)",
         linkedin: "#",

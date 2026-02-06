@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './HomePage.css';
 import ContactModal from '../components/ContactModal';
+import ContentModal from '../components/ContentModal';
+import TeamModal from '../components/TeamModal';
+import CareersModal from '../components/CareersModal';
 import AnimatedCounter from '../components/AnimatedCounter';
 import ExpandableSection from '../components/ExpandableSection';
-import { technologyServices, businessServices } from '../data/servicesData';
+import { technologyServices, businessServices, methodology, industryModalContent } from '../data/servicesData';
+import type { IndustryModalId } from '../data/servicesData';
 import Slider from "react-slick";
 import TestimonialCarousel from '../components/Testimonial';
 import Header from '../components/Header';
@@ -13,6 +16,9 @@ import Header from '../components/Header';
 
 function HomePage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [contentModalId, setContentModalId] = useState<IndustryModalId | 'methodology' | null>(null);
+  const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
+  const [isCareersModalOpen, setIsCareersModalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [businessFormData, setBusinessFormData] = useState({
     service: '',
@@ -147,8 +153,47 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      {/* Navigation */}
-      {/* <Header /> */}
+      <Header
+        onOpenIndustryModal={(id) => setContentModalId(id)}
+        onOpenMethodologyModal={() => setContentModalId('methodology')}
+      />
+
+      {/* Industry / Methodology content modals */}
+      {contentModalId && contentModalId !== 'methodology' && industryModalContent[contentModalId] && (
+        <ContentModal
+          isOpen={true}
+          onClose={() => setContentModalId(null)}
+          title={industryModalContent[contentModalId].title}
+          icon={industryModalContent[contentModalId].icon}
+        >
+          <p>{industryModalContent[contentModalId].overview}</p>
+          <h3>How WiseWay Solutions can help</h3>
+          <ul>
+            {industryModalContent[contentModalId].howWeHelp.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </ContentModal>
+      )}
+      {contentModalId === 'methodology' && (
+        <ContentModal
+          isOpen={true}
+          onClose={() => setContentModalId(null)}
+          title={methodology.title}
+          icon="🔄"
+        >
+          <p>{methodology.description}</p>
+          <h3>Scrum & Agile practices</h3>
+          <ul className="methodology-steps">
+            {methodology.steps.map((step, i) => (
+              <li key={i}>
+                <strong>{step.name}</strong>
+                {' '}{step.desc}
+              </li>
+            ))}
+          </ul>
+        </ContentModal>
+      )}
 
       {/* Hero Section */}
       <section className="home-hero">
@@ -793,7 +838,7 @@ function HomePage() {
             <div className="footer-link-column">
               <h4>Quick Links</h4>
               <a href="#about">Who we are</a>
-              <a>Careers</a>
+              <button type="button" className="footer-link-btn" onClick={() => setIsCareersModalOpen(true)}>Careers</button>
               <a>Our Leadership</a>
               <a>Investor Relation</a>
               <a>Financial Reports</a>
