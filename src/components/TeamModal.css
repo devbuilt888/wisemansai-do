@@ -20,13 +20,14 @@
 }
 
 .team-modal-box {
-  background: #f5f5f5;
-  border-radius: 16px;
-  max-width: 900px;
+  background: #fff;
+  border-radius: 12px;
+  max-width: 1200px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
-  padding: 2rem 2rem 2.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   position: relative;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
   animation: teamModalSlideUp 0.3s ease;
@@ -43,6 +44,13 @@
   }
 }
 
+.team-modal-box .team-modal-inner {
+  overflow-y: auto;
+  margin-top: 0;
+  padding-top: 2.5rem;
+  flex: 1;
+}
+
 .team-modal-close {
   position: absolute;
   top: 1rem;
@@ -56,7 +64,7 @@
   line-height: 1;
   color: #333;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -65,54 +73,8 @@
   color: #1a1a1a;
 }
 
-.team-modal-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  text-align: center;
-  margin: 0 0 0.25rem;
-}
-
-.team-modal-subtitle {
-  text-align: center;
-  font-size: 1rem;
-  color: #555;
-  margin: 0 0 1.5rem;
-}
-
-.team-modal-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.team-modal-box .team-card {
-  margin-top: 0;
-  min-height: 120px;
-}
-
-.team-modal-box .team-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-.team-modal-box .team-card h4 {
-  font-size: 0.95rem;
-  font-weight: normal;
-  color: #666;
-  margin: 0 0 0.5rem;
-}
-
 @media (max-width: 768px) {
   .team-modal-box {
     max-height: 95vh;
-    padding: 1.5rem 1.25rem;
-  }
-  .team-modal-box .team-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .team-modal-box .memberImage {
-    justify-content: center;
   }
 }

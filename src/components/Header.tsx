@@ -37,6 +37,9 @@ function Header({ onOpenIndustryModal, onOpenMethodologyModal, onOpenTeamModal, 
               {onOpenCareersModal && <button type="button" className="dropdown-menu-btn" onClick={onOpenCareersModal}>Careers</button>}
             </div>
           </div>
+          {onOpenTeamModal && (
+            <button type="button" className="home-nav-link home-nav-link-btn" onClick={onOpenTeamModal}>Our Team</button>
+          )}
           <a href="#full-services" className="home-nav-link" onClick={(e) => { e.preventDefault(); scrollToServices(); }}>Services</a>
           {/* Industry - opens modals */}
           <div className="nav-item">
